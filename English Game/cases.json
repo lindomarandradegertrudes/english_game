@@ -1,0 +1,268 @@
+{
+  "cases": [
+    {
+      "id": "CASE_6_T1_01",
+      "grade": 6,
+      "trimester": 1,
+      "title": "The Identity Dossier",
+      "bncc_code": "EF06LI19",
+      "topic": "Personal Information & Verb To Be",
+      "phases": [
+        {
+          "type": "multiple_choice",
+          "dossier": "O suspeito deixou um documento rasurado no posto de controlo da agência. Para confirmar a sua identidade, decifre o verbo correto no depoimento: 'Hello, I ___ Agent Smith and she ___ my partner, Clara.'",
+          "options": [
+            "am / is",
+            "is / are",
+            "are / am"
+          ],
+          "correct_index": 0,
+          "explanation": "Utiliza-se 'am' com a primeira pessoa (I) e 'is' com a terceira pessoa do singular (she)[cite: 37, 39]."
+        },
+        {
+          "type": "sentence_builder",
+          "dossier": "Ordene as palavras para emitir o crachá oficial de identificação do novo detetive:",
+          "target_sentence": "She is a detective from Joinville.",
+          "word_pool": ["She", "is", "a", "detective", "from", "Joinville."]
+        }
+      ]
+    },
+    {
+      "id": "CASE_6_T2_01",
+      "grade": 6,
+      "trimester": 2,
+      "title": "The Family Tree Mystery",
+      "bncc_code": "EF06LI20",
+      "topic": "Family Members & Present Continuous",
+      "phases": [
+        {
+          "type": "multiple_choice",
+          "dossier": "A câmara de vigilância registou a atividade da família suspeita na sala principal. O que é que o irmão está a fazer no momento exato da gravação?",
+          "options": [
+            "He is reading the secret document.",
+            "He read the secret document.",
+            "He will read the secret document."
+          ],
+          "correct_index": 0,
+          "explanation": "O Present Continuous (is reading) descreve ações que estão a acontecer no momento da fala[cite: 46]."
+        },
+        {
+          "type": "sentence_builder",
+          "dossier": "Reconstrua o relatório de vigilância familiar:",
+          "target_sentence": "My sister is watching the evidence.",
+          "word_pool": ["My", "sister", "is", "watching", "the", "evidence."]
+        }
+      ]
+    },
+    {
+      "id": "CASE_6_T3_01",
+      "grade": 6,
+      "trimester": 3,
+      "title": "The Daily Routine Trail",
+      "bncc_code": "EF06LI19",
+      "topic": "Daily Routine & Simple Present",
+      "phases": [
+        {
+          "type": "multiple_choice",
+          "dossier": "Para descobrir a hora exata em que o cofre foi aberto, analise a rotina diária do informador: 'Agent Alex always ___ at the headquarters at 7:00 AM.'",
+          "options": [
+            "arrives",
+            "arriving",
+            "is arrive"
+          ],
+          "correct_index": 0,
+          "explanation": "Na 3ª pessoa do singular (He/Alex) do Simple Present, adiciona-se '-s' ou '-es' ao verbo[cite: 51]."
+        }
+      ]
+    },
+    {
+      "id": "CASE_7_T1_01",
+      "grade": 7,
+      "trimester": 1,
+      "title": "The MasterChef Sabotage",
+      "bncc_code": "EF07LI25-JO",
+      "topic": "Food, Quantifiers & Imperative",
+      "phases": [
+        {
+          "type": "multiple_choice",
+          "dossier": "Alguém alterou a receita secreta da cantina. Para restaurar as instruções de preparação, escolha os quantificadores adequados:",
+          "options": [
+            "Add some water and a few apples.",
+            "Add many water and much apples.",
+            "Add a water and any apples."
+          ],
+          "correct_index": 0,
+          "explanation": "'Water' é um substantivo incontável (utiliza-se 'some') e 'apples' é contável no plural ('a few')[cite: 21]."
+        }
+      ]
+    },
+    {
+      "id": "CASE_7_T2_01",
+      "grade": 7,
+      "trimester": 2,
+      "title": "The Golden Record Archive",
+      "bncc_code": "EF07LI15",
+      "topic": "Past of To Be & Regular Verbs",
+      "phases": [
+        {
+          "type": "multiple_choice",
+          "dossier": "O arquivo histórico do ano passado foi encriptado. Identifique a forma verbal correta para validar o registo da cápsula do tempo:",
+          "options": [
+            "The agents were in Joinville yesterday and walked to school.",
+            "The agents was in Joinville yesterday and walk to school.",
+            "The agents are in Joinville yesterday and walking to school."
+          ],
+          "correct_index": 0,
+          "explanation": "Utiliza-se 'were' para o plural no passado do verbo To Be e sufixo '-ed' para o passado simples de verbos regulares[cite: 25, 27]."
+        }
+      ]
+    },
+    {
+      "id": "CASE_7_T3_01",
+      "grade": 7,
+      "trimester": 3,
+      "title": "Historical Heroes & Abilities",
+      "bncc_code": "EF07LI20",
+      "topic": "Simple Past Irregular & Modal Could",
+      "phases": [
+        {
+          "type": "multiple_choice",
+          "dossier": "Um cientista do passado deixou uma nota sobre as suas capacidades antigas: 'When I was ten, I ___ speak three languages, so I ___ a secret code.'",
+          "options": [
+            "could / wrote",
+            "can / write",
+            "could / write"
+          ],
+          "correct_index": 0,
+          "explanation": "'Could' expressa habilidade no passado e 'wrote' é o passado irregular de 'write'[cite: 30, 32]."
+        }
+      ]
+    },
+    {
+      "id": "CASE_8_T1_01",
+      "grade": 8,
+      "trimester": 1,
+      "title": "The Literary Code",
+      "bncc_code": "EF08LI15",
+      "topic": "Comparatives and Superlatives",
+      "phases": [
+        {
+          "type": "multiple_choice",
+          "dossier": "O bibliotecário precisa de comparar dois relatórios confidenciais: 'File A is ___ than File B, but File C is the ___ document of all.'",
+          "options": [
+            "more important / most critical",
+            "importanter / criticalest",
+            "as important / more critical"
+          ],
+          "correct_index": 0,
+          "explanation": "Adjetivos longos formam o comparativo com 'more' e o superlativo com 'most'[cite: 5]."
+        }
+      ]
+    },
+    {
+      "id": "CASE_8_T2_01",
+      "grade": 8,
+      "trimester": 2,
+      "title": "Predictions for 2050",
+      "bncc_code": "EF08LI14",
+      "topic": "Future with Will and Be Going To",
+      "phases": [
+        {
+          "type": "multiple_choice",
+          "dossier": "Análise de relatórios de futurismo da agência: 'Scientists predict that climate change ___ affect cities, so our team ___ start a recycling project tomorrow.'",
+          "options": [
+            "will / is going to",
+            "is going to / will",
+            "will / will to"
+          ],
+          "correct_index": 0,
+          "explanation": "'Will' é indicado para previsões gerais e 'be going to' para planos e intenções já decididos[cite: 8, 11]."
+        }
+      ]
+    },
+    {
+      "id": "CASE_8_T3_01",
+      "grade": 8,
+      "trimester": 3,
+      "title": "The Eco-Solution Network",
+      "bncc_code": "EF08LI17",
+      "topic": "Relative Pronouns & Affixes",
+      "phases": [
+        {
+          "type": "multiple_choice",
+          "dossier": "Identifique a pessoa responsável pela solução ambiental da agência: 'This is the scientist ___ invented the eco-friendly device.'",
+          "options": [
+            "who",
+            "which",
+            "where"
+          ],
+          "correct_index": 0,
+          "explanation": "O pronome relativo 'who' refere-se a pessoas[cite: 15]."
+        }
+      ]
+    },
+    {
+      "id": "CASE_9_T1_01",
+      "grade": 9,
+      "trimester": 1,
+      "title": "The Fake News Conspiracy",
+      "bncc_code": "EF09LI16",
+      "topic": "Modal Verbs & Digital Citizenship",
+      "phases": [
+        {
+          "type": "multiple_choice",
+          "dossier": "Uma notícia falsa está a espalhar-se na rede escolar. Qual é a conduta correta?",
+          "options": [
+            "You should check the source before sharing.",
+            "You must share viral news immediately.",
+            "You have to delete social media."
+          ],
+          "correct_index": 0,
+          "explanation": "'Should' é utilizado para conselhos de conduta e recomendação pedagógica[cite: 57]."
+        }
+      ]
+    },
+    {
+      "id": "CASE_9_T2_01",
+      "grade": 9,
+      "trimester": 2,
+      "title": "Human Rights Protocol",
+      "bncc_code": "EF09LI15",
+      "topic": "Conditionals (If-Clauses Types 1 & 2)",
+      "phases": [
+        {
+          "type": "multiple_choice",
+          "dossier": "Análise de cláusulas do tratado internacional da agência: 'If citizens ___ their rights, they ___ a better society.'",
+          "options": [
+            "know / will build",
+            "knew / build",
+            "will know / build"
+          ],
+          "correct_index": 0,
+          "explanation": "A Primeira Condicional (Type 1) é formada por Simple Present na oração condicional (If) e Simple Future (will) na oração principal[cite: 59]."
+        }
+      ]
+    },
+    {
+      "id": "CASE_9_T3_01",
+      "grade": 9,
+      "trimester": 3,
+      "title": "Unsolved Mystery Experiences",
+      "bncc_code": "EF09LI21-JO",
+      "topic": "Present Perfect & Adverbs",
+      "phases": [
+        {
+          "type": "multiple_choice",
+          "dossier": "O inspetor está a interrogar o agente sobre o seu histórico de campo: '___ you ___ visited the central server room?'",
+          "options": [
+            "Have / ever",
+            "Did / ever",
+            "Has / never"
+          ],
+          "correct_index": 0,
+          "explanation": "Utiliza-se 'Have + sujeito + ever + verbo no particípio passado' para perguntar sobre experiências de vida passadas[cite: 62]."
+        }
+      ]
+    }
+  ]
+}

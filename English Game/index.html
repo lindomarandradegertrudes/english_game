@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joinville Language Agency - Detectives of English</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --accent-cyan: #38bdf8;
+            --accent-amber: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-green: #22c55e;
+            --text-light: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #020617;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #334155;
+        }
+
+        .agency-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-cyan);
+        }
+
+        .user-stats {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.95rem;
+        }
+
+        .stat-badge {
+            background-color: #334155;
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .user-email {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-left: 1px solid #475569;
+            padding-left: 15px;
+        }
+
+        nav {
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: #334155;
+            color: var(--text-light);
+        }
+
+        .nav-btn.active {
+            background-color: var(--accent-cyan);
+            color: #0f172a;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            border-bottom: 1px solid #334155;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .case-title {
+            color: var(--accent-amber);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .dossier-box {
+            background-color: #0f172a;
+            border-left: 4px solid var(--accent-cyan);
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            background-color: #334155;
+            border: 2px solid transparent;
+            color: var(--text-light);
+            padding: 14px 18px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            border-color: var(--accent-cyan);
+            background-color: #475569;
+        }
+
+        .option-btn.correct {
+            background-color: #15803d;
+            border-color: var(--accent-green);
+        }
+
+        .option-btn.wrong {
+            background-color: #b91c1c;
+            border-color: var(--accent-red);
+        }
+
+        .feedback-box {
+            display: none;
+            padding: 14px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        .feedback-box.correct {
+            display: block;
+            background-color: rgba(34, 197, 94, 0.15);
+            border: 1px solid var(--accent-green);
+            color: #4ade80;
+        }
+
+        .feedback-box.wrong {
+            display: block;
+            background-color: rgba(239, 68, 68, 0.15);
+            border: 1px solid var(--accent-red);
+            color: #f87171;
+        }
+
+        .word-pool, .sentence-builder {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            min-height: 50px;
+            padding: 12px;
+            background-color: #0f172a;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px dashed #475569;
+        }
+
+        .word-chip {
+            background-color: var(--accent-cyan);
+            color: #0f172a;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .action-btn {
+            background-color: var(--accent-cyan);
+            color: #0f172a;
+            border: none;
+            padding: 12px 24px;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            filter: brightness(1.1);
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(2, 6, 23, 0.92);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border: 2px solid var(--accent-red);
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+        }
+
+        .warning-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .penalty-text {
+            color: var(--accent-red);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+
+        .select-input {
+            background-color: #0f172a;
+            color: var(--text-light);
+            border: 1px solid #475569;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="agency-title">🕵️‍♂️ JOINVILLE LANGUAGE AGENCY</div>
+        <div class="user-stats">
+            <div class="stat-badge">🪙 <span id="coinsDisplay">250</span> Coins</div>
+            <div class="stat-badge">⭐ <span id="xpDisplay">120</span> XP</div>
+            <div class="user-email" id="userEmail">aluno.exemplar@edu.joinville.sc.gov.br</div>
+        </div>
+    </header>
+
+    <nav>
+        <button class="nav-btn active" onclick="switchTab('missionTab')">📂 Missão Atual</button>
+        <button class="nav-btn" onclick="switchTab('profTab')">📊 Painel do Professor</button>
+    </nav>
+
+    <main>
+        <!-- ABA DA MISSÃO -->
+        <section id="missionTab" class="view-section active">
+            <div class="card">
+                <!-- Seletor de Ano e Trimestre -->
+                <div style="margin-bottom: 20px; display: flex; gap: 15px; align-items: center; background: #0f172a; padding: 12px; border-radius: 8px;">
+                    <label><strong>Selecionar Turma:</strong></label>
+                    <select id="gradeSelect" class="select-input" onchange="loadActiveMission()">
+                        <option value="6">6º Ano</option>
+                        <option value="7">7º Ano</option>
+                        <option value="8">8º Ano</option>
+                        <option value="9" selected>9º Ano</option>
+                    </select>
+
+                    <label><strong>Trimestre:</strong></label>
+                    <select id="trimesterSelect" class="select-input" onchange="loadActiveMission()">
+                        <option value="1" selected>1º Trimestre</option>
+                        <option value="2">2º Trimestre</option>
+                        <option value="3">3º Trimestre</option>
+                    </select>
+                </div>
+
+                <div class="card-header">
+                    <div>
+                        <div class="case-title" id="missionTitle">A carregar missão...</div>
+                        <small style="color: var(--text-dim)" id="missionSubtitle"></small>
+                    </div>
+                </div>
+
+                <!-- Conteúdo da Fase 1 (Múltipla Escolha) -->
+                <div id="phase1">
+                    <div class="dossier-box" id="dossierText">Carregando dados...</div>
+                    <div class="options-grid" id="optionsContainer"></div>
+                    <div id="feedbackBox1" class="feedback-box"></div>
+                    <button id="nextPhaseBtn" class="action-btn" style="display: none; margin-top: 15px;" onclick="goToPhase2()">Avançar para a Próxima Fase ➔</button>
+                </div>
+
+                <!-- Conteúdo da Fase 2 (Ordenação de Frase) -->
+                <div id="phase2" style="display: none;">
+                    <div class="dossier-box" id="phase2Dossier">Reconstrua a frase de segurança:</div>
+                    <div class="sentence-builder" id="sentenceBuilder"></div>
+                    <div class="word-pool" id="wordPool"></div>
+                    <button class="action-btn" onclick="checkSentence()">Verificar Código</button>
+                    <div id="feedbackBox2" class="feedback-box"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABA DO PROFESSOR -->
+        <section id="profTab" class="view-section">
+            <div class="card">
+                <h2>📊 Relatório do Professor em Tempo Real</h2>
+                <p style="color: var(--text-dim); margin-top: 5px;">Monitorização de foco e desempenho.</p>
+                <div style="background-color: #0f172a; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <h4>Ocorrências de Segurança (Saídas de Aba):</h4>
+                    <p>Total de Infrações: <strong id="totalInfractions" style="color: var(--accent-red)">0</strong></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL ANTI-COLA -->
+    <div class="modal-overlay" id="antiCheatModal">
+        <div class="modal-content">
+            <div class="warning-icon">⚠️</div>
+            <h2>QUEBRA DE PROTOCOLO DETECTADA!</h2>
+            <p style="margin-top: 10px; color: var(--text-dim);">Detectamos que mudou de aba durante o jogo.</p>
+            <div class="penalty-text">-50 COINS PENALIZAÇÃO</div>
+            <button class="action-btn" style="background-color: var(--accent-red); color: white;" onclick="closeAntiCheatModal()">Retornar à Missão</button>
+        </div>
+    </div>
+
+    <script>
+        // BANCO DE DADOS EMBUTIDO (MAPA DE PROGRESSÃO JOINVILLE)
+        const casesDatabase = [
+            {
+                "id": "CASE_6_T1_01",
+                "grade": 6,
+                "trimester": 1,
+                "title": "The Identity Dossier",
+                "bncc_code": "EF06LI19",
+                "topic": "Personal Information & Verb To Be",
+                "phases": [
+                    {
+                        "type": "multiple_choice",
+                        "dossier": "O suspeito deixou um documento rasurado no posto de controle da agência. Para confirmar a sua identidade, decifre o verbo correto no depoimento: 'Hello, I ___ Agent Smith and she ___ my partner, Clara.'",
+                        "options": ["am / is", "is / are", "are / am"],
+                        "correct_index": 0,
+                        "explanation": "Utiliza-se 'am' com a primeira pessoa (I) e 'is' com a terceira pessoa do singular (she)."
+                    },
+                    {
+                        "type": "sentence_builder",
+                        "dossier": "Ordene as palavras para emitir o crachá oficial de identificação do novo detetive:",
+                        "target_sentence": "She is a detective from Joinville.",
+                        "word_pool": ["She", "is", "a", "detective", "from", "Joinville."]
+                    }
+                ]
+            },
+            {
+                "id": "CASE_6_T2_01",
+                "grade": 6,
+                "trimester": 2,
+                "title": "The Family Tree Mystery",
+                "bncc_code": "EF06LI20",
+                "topic": "Family Members & Present Continuous",
+                "phases": [
+                    {
+                        "type": "multiple_choice",
+                        "dossier": "A câmera de vigilância registrou a atividade da família suspeita na sala principal. O que o irmão está fazendo no momento exato da gravação?",
+                        "options": ["He is reading the secret document.", "He read the secret document.", "He will read the secret document."],
+                        "correct_index": 0,
+                        "explanation": "O Present Continuous (is reading) descreve ações que estão acontecendo no momento da fala."
+                    }
+                ]
+            },
+            {
+                "id": "CASE_7_T1_01",
+                "grade": 7,
+                "trimester": 1,
+                "title": "The MasterChef Sabotage",
+                "bncc_code": "EF07LI25-JO",
+                "topic": "Food, Quantifiers & Imperative",
+                "phases": [
+                    {
+                        "type": "multiple_choice",
+                        "dossier": "Alguém alterou a receita secreta da cantina. Para restaurar as instruções de preparação, escolha os quantificadores adequados:",
+                        "options": ["Add some water and a few apples.", "Add many water and much apples.", "Add a water and any apples."],
+                        "correct_index": 0,
+                        "explanation": "'Water' é incontável (usa-se 'some') e 'apples' é contável no plural ('a few')."
+                    }
+                ]
+            },
+            {
+                "id": "CASE_8_T1_01",
+                "grade": 8,
+                "trimester": 1,
+                "title": "The Literary Code",
+                "bncc_code": "EF08LI15",
+                "topic": "Comparatives and Superlatives",
+                "phases": [
+                    {
+                        "type": "multiple_choice",
+                        "dossier": "O bibliotecário precisa comparar dois relatórios confidenciais: 'File A is ___ than File B, but File C is the ___ document of all.'",
+                        "options": ["more important / most critical", "importanter / criticalest", "as important / more critical"],
+                        "correct_index": 0,
+                        "explanation": "Adjetivos longos formam o comparativo com 'more' e o superlativo com 'most'."
+                    }
+                ]
+            },
+            {
+                "id": "CASE_9_T1_01",
+                "grade": 9,
+                "trimester": 1,
+                "title": "The Fake News Conspiracy",
+                "bncc_code": "EF09LI16",
+                "topic": "Modal Verbs & Digital Citizenship",
+                "phases": [
+                    {
+                        "type": "multiple_choice",
+                        "dossier": "Uma notícia falsa está se espalhando na rede escolar. A testemunha afirma: 'I received a viral message, but I didn't verify it.' Qual é a conduta correta?",
+                        "options": ["You should check the source before sharing.", "You must share viral news immediately.", "You have to delete social media."],
+                        "correct_index": 0,
+                        "explanation": "'Should' é utilizado para conselhos de conduta e recomendação pedagógica."
+                    },
+                    {
+                        "type": "sentence_builder",
+                        "dossier": "Ordene as palavras para formar o código de conduta digital da agência:",
+                        "target_sentence": "You must check the facts online.",
+                        "word_pool": ["You", "must", "check", "the", "facts", "online."]
+                    }
+                ]
+            }
+        ];
+
+        let coins = 250;
+        let xp = 120;
+        let isMissionActive = true;
+        let infractionsCount = 0;
+        let currentTargetSentence = "";
+
+        function loadActiveMission() {
+            const selectedGrade = parseInt(document.getElementById('gradeSelect').value);
+            const selectedTrimester = parseInt(document.getElementById('trimesterSelect').value);
+
+            const activeCase = casesDatabase.find(c => c.grade === selectedGrade && c.trimester === selectedTrimester);
+
+            if (activeCase) {
+                renderCase(activeCase);
+            } else {
+                document.getElementById('missionTitle').textContent = "Nenhuma missão cadastrada para esta combinação";
+                document.getElementById('missionSubtitle').textContent = "Selecione outro ano ou trimestre.";
+                document.getElementById('dossierText').textContent = "Aguardando novos arquivos do Mapa de Progressão de Joinville.";
+                document.getElementById('optionsContainer').innerHTML = "";
+            }
+        }
+
+        function renderCase(caseObj) {
+            document.getElementById('phase1').style.display = 'block';
+            document.getElementById('phase2').style.display = 'none';
+            document.getElementById('nextPhaseBtn').style.display = 'none';
+            document.getElementById('feedbackBox1').className = 'feedback-box';
+
+            document.getElementById('missionTitle').textContent = `CASO #${caseObj.id}: ${caseObj.title}`;
+            document.getElementById('missionSubtitle').textContent = `${caseObj.grade}º Ano - ${caseObj.trimester}º Trimestre | Tópico: ${caseObj.topic} (${caseObj.bncc_code})`;
+
+            const phase1 = caseObj.phases[0];
+            document.getElementById('dossierText').innerHTML = `<strong>📜 Dossiê do Agente:</strong><br>${phase1.dossier}`;
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            phase1.options.forEach((optionText, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = `${String.fromCharCode(65 + index)}) ${optionText}`;
+                btn.onclick = () => checkAnswer(btn, index === phase1.correct_index, phase1.explanation, caseObj.phases.length > 1);
+                optionsContainer.appendChild(btn);
+            });
+
+            if (caseObj.phases.length > 1 && caseObj.phases[1].type === 'sentence_builder') {
+                const phase2 = caseObj.phases[1];
+                currentTargetSentence = phase2.target_sentence;
+                document.getElementById('phase2Dossier').innerHTML = `<strong>🔓 Decodificador:</strong><br>${phase2.dossier}`;
+                
+                const wordPool = document.getElementById('wordPool');
+                const sentenceBuilder = document.getElementById('sentenceBuilder');
+                wordPool.innerHTML = '';
+                sentenceBuilder.innerHTML = '';
+
+                phase2.word_pool.forEach(word => {
+                    const chip = document.createElement('span');
+                    chip.className = 'word-chip';
+                    chip.textContent = word;
+                    chip.onclick = () => moveWord(chip);
+                    wordPool.appendChild(chip);
+                });
+            }
+        }
+
+        function checkAnswer(btn, isCorrect, explanation, hasNextPhase) {
+            const feedbackBox = document.getElementById('feedbackBox1');
+            const buttons = document.querySelectorAll('#optionsContainer .option-btn');
+            buttons.forEach(b => b.disabled = true);
+
+            if (isCorrect) {
+                btn.classList.add('correct');
+                feedbackBox.className = 'feedback-box correct';
+                feedbackBox.innerHTML = `<strong>Correto!</strong> ${explanation}`;
+                coins += 50;
+                document.getElementById('coinsDisplay').textContent = coins;
+                if (hasNextPhase) {
+                    document.getElementById('nextPhaseBtn').style.display = 'inline-block';
+                }
+            } else {
+                btn.classList.add('wrong');
+                feedbackBox.className = 'feedback-box wrong';
+                feedbackBox.innerHTML = `<strong>Incorreto!</strong> ${explanation}`;
+                setTimeout(() => {
+                    buttons.forEach(b => b.disabled = false);
+                    btn.classList.remove('wrong');
+                }, 2000);
+            }
+        }
+
+        function goToPhase2() {
+            document.getElementById('phase1').style.display = 'none';
+            document.getElementById('phase2').style.display = 'block';
+        }
+
+        function moveWord(chip) {
+            const builder = document.getElementById('sentenceBuilder');
+            const pool = document.getElementById('wordPool');
+            if (chip.parentElement === pool) {
+                builder.appendChild(chip);
+            } else {
+                pool.appendChild(chip);
+            }
+        }
+
+        function checkSentence() {
+            const builder = document.getElementById('sentenceBuilder');
+            const feedbackBox = document.getElementById('feedbackBox2');
+            const currentSentence = Array.from(builder.children).map(c => c.textContent).join(' ');
+
+            if (currentSentence === currentTargetSentence) {
+                feedbackBox.className = 'feedback-box correct';
+                feedbackBox.innerHTML = '<strong>🔒 Código Decodificado!</strong> Recebeu +100 Coins.';
+                coins += 100;
+                document.getElementById('coinsDisplay').textContent = coins;
+            } else {
+                feedbackBox.className = 'feedback-box wrong';
+                feedbackBox.innerHTML = '<strong>Código Incorreto!</strong> Verifique a ordem das palavras.';
+            }
+        }
+
+        // SISTEMA ANTI-COLA
+        function triggerAntiCheat() {
+            if (!isMissionActive) return;
+            if (window.lastTrigger && Date.now() - window.lastTrigger < 1500) return;
+            window.lastTrigger = Date.now();
+
+            infractionsCount++;
+            coins = Math.max(0, coins - 50);
+            document.getElementById('coinsDisplay').textContent = coins;
+            document.getElementById('antiCheatModal').style.display = 'flex';
+            document.getElementById('totalInfractions').textContent = infractionsCount;
+        }
+
+        document.addEventListener('visibilitychange', () => { if (document.hidden) triggerAntiCheat(); });
+        window.addEventListener('blur', () => { triggerAntiCheat(); });
+        function closeAntiCheatModal() { document.getElementById('antiCheatModal').style.display = 'none'; }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+            isMissionActive = (tabId === 'missionTab');
+        }
+
+        window.onload = loadActiveMission;
+    </script>
+</body>
+</html>
